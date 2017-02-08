@@ -18,6 +18,11 @@ RUN ln -s grails-$GRAILS_VERSION grails
 ENV GRAILS_HOME /usr/lib/jvm/grails
 ENV PATH $PATH:$GRAILS_HOME/bin
 
+# setup python
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		python-pip \
+	    && rm -rf /var/lib/apt/lists/*
+
 # create application dir
 RUN mkdir /app
 
